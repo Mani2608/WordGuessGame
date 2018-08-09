@@ -35,6 +35,19 @@ public class WordGuessGame {
 	 * first it asks for level and then user first guesses the word.
 	 * 
 	 */
+	void setBlacklistedLetters(String input)
+	{
+		for(int i=0;i<26;i++)
+			blacklisted_letters[i]=0;
+		int alpha;
+		input=input.toUpperCase();
+		for(int i=0;i<input.length();i++)
+		{
+			alpha=((int)(input.charAt(i)))-65;
+			blacklisted_letters[alpha]=-1;
+		}
+		
+	}
 	void startgame(){
 		run.processDictionary();
 		Scanner sc = new Scanner(System.in);
@@ -60,7 +73,7 @@ public class WordGuessGame {
 			int opponent_cmn_letrs = Integer.parseInt(opponent_answer);
 			if(opponent_cmn_letrs==0))
 			{
-				
+				setBlacklistedLetters(hum_guess_word);
 			}
 			else if(opponent_cmn_letrs==numOfDigits) {
 				

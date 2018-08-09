@@ -5,14 +5,32 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProcessDictionary {
 	
 
-	static ArrayList<ArrayList<String>> easy4 = new ArrayList<>();
-    static ArrayList<ArrayList<String>> medium5 = new ArrayList<>();
-    static ArrayList<ArrayList<String>> hard6 = new ArrayList<>();
+	ArrayList<ArrayList<String>> easy4 = new ArrayList<>();
+    ArrayList<ArrayList<String>> medium5 = new ArrayList<>();
+    ArrayList<ArrayList<String>> hard6 = new ArrayList<>();
+    
+    ArrayList<String> letter4 = new ArrayList<>();
+    ArrayList<String> letter5 = new ArrayList<>();
+    ArrayList<String> letter6 = new ArrayList<>();
+    
+    Map<Integer,ArrayList<String>> n_digit_words = new HashMap<Integer,ArrayList<String>>();
+    Map<Integer,ArrayList<ArrayList<String>>> word_anagrams = new HashMap<Integer,ArrayList<ArrayList<String>>>();
 
+    ProcessDictionary() {
+    	n_digit_words.put(4, letter4);
+    	n_digit_words.put(5, letter5);
+    	n_digit_words.put(6, letter6);
+    	word_anagrams.put(4,easy4);
+    	word_anagrams.put(5,medium5);
+    	word_anagrams.put(4,hard6);
+    	
+    }
     static String sortedString (String unsorted){
         char temp[] = unsorted.toCharArray();
         Arrays.sort(temp);
@@ -36,15 +54,14 @@ public class ProcessDictionary {
         return result;
     }
 
-    public static void main(String[] args) throws  Exception {
+    public void processDictionary() throws  Exception {
         File file = new File("sowpods.txt");
+        
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         String word;
-        ArrayList<String> letter4 = new ArrayList<>();
-        ArrayList<String> letter5 = new ArrayList<>();
-        ArrayList<String> letter6 = new ArrayList<>();
+       
         while ((word = br.readLine()) != null){
             if(word.length()==4){
                 letter4.add(word);

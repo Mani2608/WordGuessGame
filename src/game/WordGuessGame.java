@@ -85,12 +85,12 @@ public class WordGuessGame {
 	}
 	String getNextWord(int index) {
 		ArrayList<ArrayList<String>> n_letter_word_with_anagrams = getfrompoojitha();
-		while(true) {
-		String next_word = n_letter_word_with_anagrams.get(index++).get(0);
+		String next_word = n_letter_word_with_anagrams.get(index).get(0);
 		for(int i=0;i<next_word.length();i++) {
-			if()
+			if(blacklisted_words[next_word.charAt(i)-'a']==-1)
+				return getNextWord(index+1);
 		}
-		}
+		
 		
 	}
 	String getRandomWord(int num_of_digits) {
